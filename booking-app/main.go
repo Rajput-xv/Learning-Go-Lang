@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
 	// fmt.Println("Hello, World!") //new line print
@@ -49,10 +52,10 @@ func main() {
 
 	// var bookings = [50]string{"Yash","Tom","Ansh"} //array declaration
 	// var bookings = [50]string{} //array declaration
-	var bookings [50]string //array declaration
+	// var bookings [50]string //array declaration
 
 	// dynamic slice
-	// var bookings []string
+	var bookings []string
 	// var bookings = []string{}
 	// bookings := []string{}
 
@@ -82,7 +85,8 @@ func main() {
 	fmt.Scan(&userTickets)
 
 	remainingTickets = remainingTickets - userTickets
-	bookings[0] = firstName + " " + lastName
+	// bookings[0] = firstName + " " + lastName
+	bookings = append(bookings, firstName+" "+lastName)
 
 	fmt.Printf("The whole array/slice: %v\n", bookings)
 	fmt.Printf("The first value: %v\n", bookings[0])
@@ -93,4 +97,119 @@ func main() {
 	fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
 
 	// fmt.Printf("All bookings: %v\n", bookings)
+
+	// loops
+	// for {
+	// 	//logic
+	// }
+
+	firstNames := []string{}
+	//always two values when ranging over a slice
+	// for index, booking := range bookings {
+	// 	var names = strings.Fields(booking)
+	// 	firstNames = append(firstNames, names[0])
+	// }
+
+	// _ is used to ignore the value(unused variable)
+	for _, booking := range bookings {
+		var names = strings.Fields(booking)
+		firstNames = append(firstNames, names[0])
+	}
+	fmt.Printf("The first names of bookings are: %v\n", firstNames)
+
+	// if remainingTickets == 0 {
+	// 	//end program
+	// 	fmt.Println("Our conference is booked out. Come back next year.")
+	// 	// break
+	// }
+
+	var noTickets bool = remainingTickets == 0
+	if noTickets {
+		//end program
+		fmt.Println("Our conference is booked out. Come back next year.")
+		// break
+	}
+
+	// if userTickets > remainingTickets {
+	// 	// fmt.Printf("We only have %v tickets remaining, so you can't book %v tickets\n", remainingTickets, userTickets)
+	// } else {
+	// 	//logic of booking the tickets
+	// }
+
+	// if userTickets < remainingTickets {
+	// 	//logic of booking the tickets
+	// 	fmt.Println("Booking tickets...")
+	// } else if userTickets == remainingTickets {
+	// 	//logic of booking the tickets
+	// 	fmt.Println("You have booked the last tickets...")
+	// } else {
+	// 	fmt.Printf("We only have %v tickets remaining, so you can't book %v tickets\n", remainingTickets, userTickets)
+	// }
+
+	// for true{
+	// 	//logic
+	// }
+
+	// for remainingTickets > 0 && len(bookings) < int(conferenceTickets) {
+	// 	//Logic
+	// }
+
+	//Input Validations
+	// isValidName := len(firstName) >= 2 && len(lastName) >= 2
+	// isValidEmail := strings.Contains(email, "@")
+	// isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets
+
+	// if isValidName && isValidEmail && isValidTicketNumber {
+	// 	//logic for booking the ticket
+	// } else {
+	// 	if !isValidName {
+	// 		fmt.Println("First name or last name you entered is too short")
+	// 	}
+	// 	if !isValidEmail {
+	// 		fmt.Println("Email you entered is not valid")
+	// 	}
+	// 	if !isValidTicketNumber {
+	// 		fmt.Println("Number of tickets you entered is not valid")
+	// 	}
+	// }
+
+	// switch statement
+	// city := "London"
+
+	// switch city {
+	// 	case "New York":
+	// 		fmt.Println("You are in New York")
+	// 	case "Singapore", "Hong Kong":
+	// 		fmt.Println("You are in Asia")
+	// 	case "London", "Berlin":
+	// 		fmt.Println("You are in Europe")
+	// 	default:
+	// 		fmt.Println("You are somewhere else")
+	// }
+
+	//fucntions
+	// greetUsers()
+	// greetUsers2(conferenceName)
+	// fmt.Println(getFirstNames(bookings))
+	// firstNames := getFirstNames(bookings)
+	// fmt.Printf("The first names are: %v\n", firstNames)
+
 }
+
+// func greetUsers() {
+// 	fmt.Println("Welcome to our application")
+// }
+
+// func greetUsers2(conName string) {
+// 	fmt.Printf("Welcome to %v booking app\n", conName)
+// }
+
+// return type []string specifies that this function returns a slice of strings
+// func getFirstNames(bookings []string)  []string {
+// 	var firstNames []string
+// 	for _, booking := range bookings {
+// 		var names = strings.Fields(booking)
+// 		firstNames = append(firstNames, names[0])
+// 	}
+// 	return firstNames
+// }
