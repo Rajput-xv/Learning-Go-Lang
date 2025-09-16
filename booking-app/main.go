@@ -3,7 +3,15 @@ package main
 import (
 	"fmt"
 	"strings"
+	// "booking-app/helper"
+	// "time"
+	// "sync"
 )
+
+//package level global varibles
+// const conferenceTickets int = 50
+// var remainingTickets int = 50
+// var conferenceName = "Go Conference"
 
 func main() {
 	// fmt.Println("Hello, World!") //new line print
@@ -213,3 +221,104 @@ func main() {
 // 	}
 // 	return firstNames
 // }
+
+// assign value in main function - isValidName, isValidEmail, isValidTicketNumber := validateUserInput(firstName, lastName, email, userTickets, remainingTickets)
+//multiple return values
+// func validateUserInput(firstName string, lastName string, email string, userTickets uint, remainingTickets uint) (bool, bool, bool) {
+// 	isValidName := len(firstName) >= 2 && len(lastName) >= 2
+// 	isValidEmail := strings.Contains(email, "@")
+// 	isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets
+
+// 	return isValidName, isValidEmail, isValidTicketNumber
+// }
+
+// assign value in main function - firstName, lastName, email, userName, userTickets := getUserInput()
+//taking user input in function
+// func getUserInput() (string, string, string, string, uint) {
+// 	var firstName string
+// 	var lastName string
+// 	var email string
+// 	var userName string
+// 	var userTickets uint
+
+// 	fmt.Println("Enter your First name: ")
+// 	fmt.Scan(&firstName) //& is used to get the memory address of the variable
+
+// 	fmt.Println("Enter your Last name: ")
+// 	fmt.Scan(&lastName)
+
+// 	fmt.Println("Enter your Email: ")
+// 	fmt.Scan(&email)
+
+// 	fmt.Println("Enter your User name: ")
+// 	fmt.Scan(&userName)
+
+// 	fmt.Println("Enter number of tickets: ")
+// 	fmt.Scan(&userTickets)
+
+// 	return firstName, lastName, email, userName, userTickets
+// }
+
+// assign value in main function - bookings, remainingTickets := bookTicket( userTickets, firstName, lastName, email, userName, bookings, remainingTickets)
+//updating multiple values in function
+// func bookTicket(userTickets uint, firstName string, lastName string, email string, userName string) (uint, []string) {
+// 	remainingTickets = remainingTickets - userTickets
+// 	bookings = append(bookings, fmt.Sprintf("%v %v %v %v %v", firstName, lastName, email, userName, userTickets))
+// 	return remainingTickets, bookings
+// }
+
+//map - string to string (only 1 data type)
+// var userData = map[string]string{}
+// var userData = make(map[string]string)
+
+// userData["firstName"] = firstName
+// userData["lastName"] = lastName
+// userData["email"] = email
+// userData["userName"] = userName
+// userData["userTickets"] = strconv.FormatUint(uint64(userTickets), 10) //convert uint to string
+
+// initialize slice of map with 0 size
+// var bookings = make([]map[string]string, 0)
+// bookings = append(bookings, userData)
+
+// mix data types - structure
+// package level global varibles
+// type UserData struct{
+// 	firsName string
+// 	lastName string
+// 	email string
+// 	userName string
+// 	userTickets uint
+// }
+
+// assign value
+// var UserData = UserData{
+// 	firsName:    "" or variable name,
+// 	lastName:    "", or variable name,
+// 	email:       "", or variable name,
+// 	userName:    "", or variable name,
+// 	userTickets: 0, or variable name,
+// }
+
+// access values by .
+// firstNames := []string{}
+// firstNames = append(firstNames, UserData.firsName)
+
+// func sendTicket(userTickets uint, firstName string, lastName string, email string) {
+// 	time.Sleep(10 * time.Second)
+// 	var ticket = fmt.Sprintf("%v tickets for %v %v", userTickets, firstName, lastName)
+// 	fmt.Printf("Sending ticket:\n %v \nto email address %v\n", ticket, email)
+// }
+
+// concurrency
+// new thread
+// while calling the function add go in front of the line
+
+// goroutines means new threads
+// to continue main thread until the goroutine is completed
+// var wg = sync.WaitGroup{}
+
+// wg.Add(1) //add the number of goroutines to wait for (before the new thread)
+// go sendTicket(userTickets, firstName, lastName, email) (after the function/thread call)
+// wg.Wait() //block until the counter is 0 (last line of function code)
+// wg.Done() //decrement the counter by 1 (at the end of the new thread/function)
